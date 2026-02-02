@@ -24,6 +24,24 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
+// GatherSpec allows specifying the execution details for a must-gather run and the collection behavior.
+// +kubebuilder:validation:XValidation:rule="!(has(self.since) && has(self.sinceTime))",message="only one of since or sinceTime may be specified"
+type GatherSpec struct {
+	// Since only returns logs newer than a relative duration like "2h" or "30m".
+	// This is passed to the must-gather script to filter log collection.
+	// Only one of since or sinceTime may be specified.
+	// +kubebuilder:validation:Optional
+	// +kubebuilder:validation:Format=duration
+	Since *metav1.Duration `json:"since,omitempty"`
+
+	// SinceTime only returns logs after a specific date/time (RFC3339 format).
+	// This is passed to the must-gather script to filter log collection.
+	// Only one of since or sinceTime may be specified.
+	// +kubebuilder:validation:Optional
+	// +kubebuilder:validation:Format=date-time
+	SinceTime *metav1.Time `json:"sinceTime,omitempty"`
+}
+
 // MustGatherSpec defines the desired state of MustGather
 type MustGatherSpec struct {
 	// the service account to use to run the must gather job pod, defaults to default
@@ -58,6 +76,11 @@ type MustGatherSpec struct {
 	// the tar archive on the cluster.
 	// +optional
 	Storage *Storage `json:"storage,omitempty"`
+
+	// GatherSpec allows overriding the command and/or arguments for the custom must-gather image
+	// and also configures the collection behavior time filters, etc.
+	// +optional
+	GatherSpec *GatherSpec `json:"gatherSpec,omitempty"`
 }
 
 // SFTPSpec defines the desired state of SFTPSpec

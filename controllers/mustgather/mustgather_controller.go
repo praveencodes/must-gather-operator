@@ -21,8 +21,10 @@ import (
 	goerror "errors"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/go-logr/logr"
+	configv1 "github.com/openshift/api/config/v1"
 	mustgatherv1alpha1 "github.com/openshift/must-gather-operator/api/v1alpha1"
 	"github.com/openshift/must-gather-operator/pkg/localmetrics"
 	"github.com/redhat-cop/operator-utils/pkg/util"
@@ -147,7 +149,7 @@ func (r *MustGatherReconciler) Reconcile(ctx context.Context, request reconcile.
 		}
 	}
 
-	job, err := r.getJobFromInstance(instance)
+	job, err := r.getJobFromInstance(ctx, instance)
 	if err != nil {
 		log.Error(err, "unable to get job from", "instance", instance)
 		return r.ManageError(ctx, instance, err)
@@ -367,7 +369,7 @@ func (r *MustGatherReconciler) addFinalizer(ctx context.Context, reqLogger logr.
 	return nil
 }
 
-func (r *MustGatherReconciler) getJobFromInstance(instance *mustgatherv1alpha1.MustGather) (*batchv1.Job, error) {
+func (r *MustGatherReconciler) getJobFromInstance(ctx context.Context, instance *mustgatherv1alpha1.MustGather) (*batchv1.Job, error) {
 	// Inject the operator image URI from the pod's env variables
 	operatorImage, varPresent := os.LookupEnv("OPERATOR_IMAGE")
 	if !varPresent {
@@ -376,7 +378,25 @@ func (r *MustGatherReconciler) getJobFromInstance(instance *mustgatherv1alpha1.M
 		return nil, err
 	}
 
-	return getJobTemplate(operatorImage, *instance, r.TrustedCAConfigMap), nil
+	// Best-effort fetch of cluster creation time (used to clamp since/sinceTime filters).
+	// Errors here must NOT block must-gather execution.
+	var clusterCreationTime *time.Time
+	if t, err := r.getClusterCreationTime(ctx); err != nil {
+		log.V(2).Info("unable to determine cluster creation time; since filters will not be clamped", "err", err)
+	} else {
+		clusterCreationTime = t
+	}
+
+	return getJobTemplate(operatorImage, *instance, r.TrustedCAConfigMap, clusterCreationTime), nil
+}
+
+func (r *MustGatherReconciler) getClusterCreationTime(ctx context.Context) (*time.Time, error) {
+	cv := &configv1.ClusterVersion{}
+	if err := r.GetClient().Get(ctx, types.NamespacedName{Name: "version"}, cv); err != nil {
+		return nil, err
+	}
+	t := cv.CreationTimestamp.Time
+	return &t, nil
 }
 
 // contains is a helper function for finalizer

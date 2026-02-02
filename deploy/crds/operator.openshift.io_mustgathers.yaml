@@ -38,13 +38,36 @@ spec:
             type: object
           spec:
             description: MustGatherSpec defines the desired state of MustGather
-            properties:
-              audit:
-                default: false
+            properties:              
+              gatherSpec:
                 description: |-
-                  A flag to specify if audit logs must be collected
-                  See documentation for further information.
-                type: boolean
+                  GatherSpec allows overriding the command and/or arguments for the custom must-gather image
+                  and also configures the collection behavior time filters, etc.
+                properties:
+                  audit:
+                    default: false
+                    description: |-
+                      A flag to specify if audit logs must be collected
+                      See documentation for further information.
+                    type: boolean
+                  since:
+                    description: |-
+                      Since only returns logs newer than a relative duration like "2h" or "30m".
+                      This is passed to the must-gather script to filter log collection.
+                      Only one of since or sinceTime may be specified.
+                    format: duration
+                    type: string
+                  sinceTime:
+                    description: |-
+                      SinceTime only returns logs after a specific date/time (RFC3339 format).
+                      This is passed to the must-gather script to filter log collection.
+                      Only one of since or sinceTime may be specified.
+                    format: date-time
+                    type: string
+                type: object
+                x-kubernetes-validations:
+                - message: only one of since or sinceTime may be specified
+                  rule: '!(has(self.since) && has(self.sinceTime))'
               mustGatherTimeout:
                 description: |-
                   A time limit for gather command to complete a floating point number with a suffix:
