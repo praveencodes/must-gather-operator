@@ -3,7 +3,7 @@ OPERATOR_NAME?=$(shell sed -n 's/.*OperatorName .*"\([^"]*\)".*/\1/p' config/con
 OPERATOR_NAMESPACE?=$(shell sed -n 's/.*OperatorNamespace .*"\([^"]*\)".*/\1/p' config/config.go)
 
 IMAGE_REGISTRY?=quay.io
-IMAGE_REPOSITORY?=app-sre
+IMAGE_REPOSITORY?=rh-ee-pravekum
 IMAGE_NAME?=$(OPERATOR_NAME)
 
 # Optional additional deployment image

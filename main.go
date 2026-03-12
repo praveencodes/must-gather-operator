@@ -120,6 +120,10 @@ func main() {
 		LeaderElectionID:       "b15e5fc1.openshift.io",
 	}
 
+	if coverageEnabled { // Boolean set via build tags or env
+		go startCoverageServer()
+	}
+
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), options)
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")
