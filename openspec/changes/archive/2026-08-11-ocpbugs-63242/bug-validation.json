@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "ticket_id": "OCPBUGS-63242",
+    "doc_type": "bug",
+    "pass_threshold": 80,
+    "output_mode": "json_plus_summary",
+    "weights_applied": { "completeness": 0.6, "quality": 0.4 }
+  },
+  "validation_results": {
+    "completeness_score": 58,
+    "quality_score": 88,
+    "overall_score": 70,
+    "overall_status": "NEEDS_REVISION",
+    "missing_elements": [
+      "Severity/Priority: No explicit severity or priority classification in the Jira report",
+      "Linked Epic: No Epic or feature-context link present (customfield/parent empty)",
+      "Environment Details: OpenShift versions 4.20/4.21 and a sample CR are present, but platform/topology and reproducibility rating are not stated"
+    ],
+    "quality_issues": [
+      {
+        "type": "Reproducibility",
+        "quote": "How reproducible: (empty in original ticket)",
+        "suggestion": "State always/often/intermittent for the missing-secret case (this appears always-reproducible when the referenced Secret is absent)."
+      },
+      {
+        "type": "Specificity",
+        "quote": "I expect an error message to be returned directly",
+        "suggestion": "Clarify the expected user-visible surface (MustGather status condition, event, or both) so acceptance criteria are unambiguous for the fix."
+      }
+    ],
+    "blockers": [],
+    "non_blockers": [
+      "No linked Epic — feature area is still clear from title/description (MustGather secret handling / upload target credentials)",
+      "No severity field — impact is described (CR stuck, silent failure) but not formally classified",
+      "Expected error surface could be more precise (status vs events) without blocking triage"
+    ],
+    "linked_epic": null,
+    "original_pr_urls": [],
+    "has_steps_to_reproduce": true,
+    "has_error_evidence": true
+  }
+}

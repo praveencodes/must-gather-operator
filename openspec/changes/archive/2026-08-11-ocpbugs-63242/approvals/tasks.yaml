@@ -1,0 +1,6 @@
+artifact_id: tasks
+status: approved
+approved_at: "2026-08-11T13:31:30Z"
+eval_score: 100
+quality_label: pass
+note: "User approved — unlock implementation via /opsx-apply"

@@ -1,0 +1,19 @@
+artifact_id: repro-verification
+artifact_path: openspec/changes/ocpbugs-63242/repro-verification-report.md
+stage: repro-verification
+stage_eval_file: evals/repro-verification_eval.yaml
+gate: stage_evals
+scored_at: "2026-08-11T13:25:27Z"
+overall_score: 100
+overall_pass: true
+refinement_round: 1
+notes:
+  - "evals/repro-verification_eval.yaml has evals: [] — structural rubric check applied."
+  - "Bug Confirmed Yes via repo-local fake-client + user-provided logs; live cluster create Forbidden."
+cases: []
+structural_checks:
+  has_bug_confirmed: true
+  has_failure_signature: true
+  has_steps_with_observed_results: true
+  has_log_source: true
+  no_fabricated_live_cluster: true

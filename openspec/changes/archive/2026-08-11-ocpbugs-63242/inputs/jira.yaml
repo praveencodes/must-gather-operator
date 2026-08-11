@@ -1,0 +1,24 @@
+jira_key: OCPBUGS-63242
+jira_summary: "MustGather CR stuck when the caseManagementAccountSecretRef field points to a Secret that doesn’t exist"
+jira_url: https://issues.redhat.com/browse/OCPBUGS-63242
+target_repo: https://github.com/openshift/must-gather-operator
+use_working_folder_as_repo: true
+base_commit: 0ff4e004fabb57afc9aa26e93639f2674e04bace
+fix_branch: fix/ocpbugs-63242
+created_at: "2026-08-11T13:16:40Z"
+jira_fetched_at: "2026-08-11T13:16:40Z"
+epic_key: null
+epic_name: null
+epic_url: null
+working_folder_path: /Users/praveen/Redhat/agentic-sdlc/aug-11/must-gather-operator
+agents_md_path: openspec/changes/ocpbugs-63242/inputs/AGENTS.md
+agents_md_source: https://github.com/openshift/must-gather-operator/pull/379
+task_sizing:
+  min: 2
+  max: 8
+  consolidation_threshold: 2
+sme_decisions:
+  status_path: ManageError
+  secret_error_scope: NotFound_only
+  tests: unit_only
+  decided_at: "2026-08-11T13:30:00Z"

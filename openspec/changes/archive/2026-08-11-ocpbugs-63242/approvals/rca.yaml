@@ -1,0 +1,6 @@
+artifact_id: rca
+status: approved
+approved_at: "2026-08-11T13:28:30Z"
+eval_score: 100
+quality_label: pass
+note: "User approved — unlock bugfix-plan (internal) then tasks"

@@ -1,0 +1,6 @@
+artifact_id: repro-verification
+status: approved
+approved_at: "2026-08-11T13:25:30Z"
+eval_score: 100
+quality_label: pass
+note: "User approved — unlock RCA; agentic docs from PR #379"

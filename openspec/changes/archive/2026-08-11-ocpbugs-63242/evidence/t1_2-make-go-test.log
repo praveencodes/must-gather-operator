@@ -1,0 +1,11 @@
+boilerplate/openshift/golang-osd-operator/standard.mk:107: Setting GOEXPERIMENT=boringcrypto - this generally causes builds to fail unless building inside the provided Dockerfile. If building locally consider calling 'go build .'
+bash: setup-envtest: command not found
+# If for any reason we've made it this far and TESTTARGETS is still empty, fail early.
+GOOS=darwin GOARCH=arm64 CGO_ENABLED=1 GOFLAGS="-tags=fips_enabled" GOEXPERIMENT=boringcrypto KUBEBUILDER_ASSETS="" go test  github.com/openshift/must-gather-operator github.com/openshift/must-gather-operator/api/v1alpha1 github.com/openshift/must-gather-operator/config github.com/openshift/must-gather-operator/controllers/mustgather github.com/openshift/must-gather-operator/pkg/k8sutil github.com/openshift/must-gather-operator/pkg/localmetrics github.com/openshift/must-gather-operator/version
+?   	github.com/openshift/must-gather-operator	[no test files]
+?   	github.com/openshift/must-gather-operator/api/v1alpha1	[no test files]
+?   	github.com/openshift/must-gather-operator/config	[no test files]
+ok  	github.com/openshift/must-gather-operator/controllers/mustgather	1.025s
+?   	github.com/openshift/must-gather-operator/pkg/k8sutil	[no test files]
+?   	github.com/openshift/must-gather-operator/pkg/localmetrics	[no test files]
+?   	github.com/openshift/must-gather-operator/version	[no test files]

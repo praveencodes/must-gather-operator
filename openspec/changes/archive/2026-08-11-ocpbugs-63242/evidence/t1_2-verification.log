@@ -1,0 +1,8 @@
+=== RUN   TestReconcile
+=== RUN   TestReconcile/reconcile_job_not_found_creates_job_successfully
+=== RUN   TestReconcile/reconcile_job_not_found_user_secret_missing_surfaces_error
+--- PASS: TestReconcile (0.00s)
+    --- PASS: TestReconcile/reconcile_job_not_found_creates_job_successfully (0.00s)
+    --- PASS: TestReconcile/reconcile_job_not_found_user_secret_missing_surfaces_error (0.00s)
+PASS
+ok  	github.com/openshift/must-gather-operator/controllers/mustgather	0.477s

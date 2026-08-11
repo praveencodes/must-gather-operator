@@ -1,0 +1,16 @@
+artifact_id: bug-report
+artifact_path: openspec/changes/ocpbugs-63242/bug-report.md
+stage: bug-report
+stage_eval_file: evals/bug-report_eval.yaml
+gate: stage_evals
+scored_at: "2026-08-11T13:22:10Z"
+overall_score: 100
+overall_pass: true
+refinement_round: 1
+notes:
+  - "evals/bug-report_eval.yaml has evals: [] — no YAML cases to score; structural rubric check applied."
+  - "No Epic/PR ARD available; report correctly uses [UNKNOWN] instead of fabricating sources."
+cases: []
+structural_checks:
+  missing_sections: []
+  checks: {'has_numbered_steps': True, 'has_expected': True, 'has_actual': True, 'has_error_evidence': True, 'no_fabricated_epic': True, 'addresses_stage0_severity': True, 'addresses_stage0_epic': True, 'no_root_cause_speculation_section': True}

@@ -1,0 +1,20 @@
+artifact_id: tasks
+artifact_path: openspec/changes/ocpbugs-63242/tasks.md
+stage: tasks
+stage_eval_file: evals/tasks_eval.yaml
+gate: stage_evals
+scored_at: "2026-08-11T13:31:01Z"
+overall_score: 100
+overall_pass: true
+refinement_round: 1
+notes:
+  - "evals/tasks_eval.yaml has evals: [] — structural rubric check applied."
+  - "task_sizing defaults applied; consolidated to 2 tasks (min 2)."
+  - "Unit tests co-generated in T1_1; no separate e2e task per SME default."
+cases: []
+structural_checks:
+  sections_0_to_5: true
+  agent_ids_from_agents_md: true
+  unit_tests_co_generated: true
+  task_count_in_range: true
+  files_from_rca_plan: true

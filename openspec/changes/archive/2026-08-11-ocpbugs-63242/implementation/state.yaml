@@ -1,0 +1,17 @@
+machine:
+  state: COMPLETE
+  current_task_id: null
+  current_task_index: 2
+  total_tasks: 2
+  last_transition: "2026-08-11T13:35:53Z"
+completed:
+  - task_id: T1_1
+    test_result: PASS
+  - task_id: T1_2
+    test_result: PASS
+current_task_result: null
+rejections: []
+working_folder_mode: true
+change: ocpbugs-63242
+phase: 1
+pr_url: N/A

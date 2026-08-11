@@ -1,0 +1,22 @@
+artifact_id: bug-validation
+artifact_path: openspec/changes/ocpbugs-63242/bug-validation.json
+stage: bug-validation
+stage_eval_file: null
+gate: rubric_only
+scored_at: "2026-08-11T13:19:46Z"
+overall_score: 70
+overall_pass: false
+rubric:
+  completeness_score: 58
+  quality_score: 88
+  overall_status: NEEDS_REVISION
+  pass_threshold: 80
+  has_steps_to_reproduce: true
+  has_error_evidence: true
+  blockers: []
+notes:
+  - "Rubric gate: artifact scores the Jira bug report itself; overall_status NEEDS_REVISION because score < 80 and severity/epic pillars are missing."
+  - "No BLOCKED findings — steps to reproduce and error evidence are present; triage may proceed if user approves NEEDS_REVISION."
+  - "No project_ecosystem section — agents.md has no Validation Stage Hints schema."
+refinement_round: 1
+cases: []

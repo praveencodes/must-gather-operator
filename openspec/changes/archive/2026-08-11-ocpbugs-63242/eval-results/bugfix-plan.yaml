@@ -1,0 +1,4 @@
+artifact_id: bugfix-plan
+gate: skip
+overall_pass: true
+note: "Internal artifact — eval gate skipped per artifact-eval-map.yaml"

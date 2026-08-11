@@ -1,0 +1,20 @@
+artifact_id: rca
+artifact_path: openspec/changes/ocpbugs-63242/rca-report.md
+stage: rca
+stage_eval_file: evals/rca_eval.yaml
+gate: stage_evals
+scored_at: "2026-08-11T13:28:12Z"
+overall_score: 100
+overall_pass: true
+refinement_round: 1
+notes:
+  - "evals/rca_eval.yaml has evals: [] — structural rubric check applied."
+  - "Root cause pinned to mustgather_controller.go Secret NotFound empty-success return at baseline 0ff4e00."
+cases: []
+structural_checks:
+  root_cause_distinct_from_symptom: true
+  failure_trace_depth_ge_2: true
+  cites_repro_and_code: true
+  fix_area_specific: true
+  no_code_written: true
+  agents_mapped: true
