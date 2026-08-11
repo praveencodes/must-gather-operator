@@ -499,7 +499,7 @@ func TestReconcile(t *testing.T) {
 			},
 		},
 		{
-			name: "reconcile_job_not_found_user_secret_missing_no_requeue",
+			name: "reconcile_job_not_found_user_secret_missing_returns_error",
 			setupEnv: func(t *testing.T) {
 				t.Setenv("OPERATOR_NAMESPACE", "must-gather-operator")
 				t.Setenv("OPERATOR_IMAGE", "img")
@@ -526,10 +526,27 @@ func TestReconcile(t *testing.T) {
 				}
 				return []client.Object{mg, cv}
 			},
-			interceptors:   func() interceptClient { return interceptClient{} },
-			expectError:    false,
-			expectResult:   reconcile.Result{},
-			postTestChecks: func(t *testing.T, cl client.Client) {},
+			interceptors: func() interceptClient { return interceptClient{} },
+			expectError:  true,
+			expectResult: reconcile.Result{},
+			postTestChecks: func(t *testing.T, cl client.Client) {
+				mg := &mustgatherv1alpha1.MustGather{}
+				if err := cl.Get(context.TODO(), types.NamespacedName{Namespace: "ns", Name: "example-mustgather"}, mg); err != nil {
+					t.Fatalf("failed to get MustGather: %v", err)
+				}
+				found := false
+				for _, c := range mg.GetConditions() {
+					if c.Type == "ReconcileError" {
+						found = true
+						if c.Status != metav1.ConditionTrue {
+							t.Fatalf("expected ReconcileError condition to be True")
+						}
+					}
+				}
+				if !found {
+					t.Fatalf("expected ReconcileError condition to be set on MustGather status")
+				}
+			},
 		},
 		{
 			name: "reconcile_job_active_updates_status_running",
