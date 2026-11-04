@@ -187,7 +187,7 @@ github.com/openshift/must-gather-clean/pkg/schema
 github.com/openshift/must-gather-clean/pkg/traversal
 github.com/openshift/must-gather-clean/pkg/version
 github.com/openshift/must-gather-clean/pkg/watermarker
-# github.com/openshift/operator-custom-metrics v0.5.0
+# github.com/openshift/operator-custom-metrics v0.5.1
 ## explicit; go 1.17
 github.com/openshift/operator-custom-metrics/pkg/metrics
 # github.com/operator-framework/operator-lib v0.11.0

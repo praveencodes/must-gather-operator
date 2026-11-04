@@ -142,8 +142,8 @@ github.com/openshift/api v0.0.0-20240522145529-93d6bda14341 h1:JQpzgk+p24rkgNbNs
 github.com/openshift/api v0.0.0-20240522145529-93d6bda14341/go.mod h1:qNtV0315F+f8ld52TLtPvrfivZpdimOzTi3kn9IVbtU=
 github.com/openshift/must-gather-clean v0.0.6-0.20260728103310-9795dc38acc5 h1:2kyX9LUk4+Me2w1yDNajsT4Jz+bfghaLdqTZ6+O5u7E=
 github.com/openshift/must-gather-clean v0.0.6-0.20260728103310-9795dc38acc5/go.mod h1:0ZPjjy/3EX2+YG4FgU60RmaKd/euNYqj9L09d+T3Iiw=
-github.com/openshift/operator-custom-metrics v0.5.0 h1:iRZ6e3HvGSxw1dZgnY5emEN6fg9u/OhHfEC+u3ovhSE=
-github.com/openshift/operator-custom-metrics v0.5.0/go.mod h1:garCvCZK9l0RS0vCcz5anKsJSU60XgizYXllbMjRW5M=
+github.com/openshift/operator-custom-metrics v0.5.1 h1:1pk4YMUV+cmqfV0f2fyxY62cl7Gc76kwudJT+EdcfYM=
+github.com/openshift/operator-custom-metrics v0.5.1/go.mod h1:0dYDHi/ubKRWzsC9MmW6bRMdBgo1QSOuAh3GupTe0Sw=
 github.com/operator-framework/operator-lib v0.11.0 h1:eYzqpiOfq9WBI4Trddisiq/X9BwCisZd3rIzmHRC9Z8=
 github.com/operator-framework/operator-lib v0.11.0/go.mod h1:RpyKhFAoG6DmKTDIwMuO6pI3LRc8IE9rxEYWy476o6g=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
